@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltairenoel Encarnacion - Mechanical Engineering Portfolio</title>
+    
+    <!-- Kepler Font - Exact match from globals.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kepler+Std:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'kepler': ['Kepler Std', 'serif'],
+                    },
+                    colors: {
+                        background: 'var(--background)',
+                        foreground: 'var(--foreground)',
+                        card: 'var(--card)',
+                        'card-foreground': 'var(--card-foreground)',
+                        popover: 'var(--popover)',
+                        'popover-foreground': 'var(--popover-foreground)',
+                        primary: 'var(--primary)',
+                        'primary-foreground': 'var(--primary-foreground)',
+                        secondary: 'var(--secondary)',
+                        'secondary-foreground': 'var(--secondary-foreground)',
+                        muted: 'var(--muted)',
+                        'muted-foreground': 'var(--muted-foreground)',
+                        accent: 'var(--accent)',
+                        'accent-foreground': 'var(--accent-foreground)',
+                        destructive: 'var(--destructive)',
+                        'destructive-foreground': 'var(--destructive-foreground)',
+                        border: 'var(--border)',
+                        input: 'var(--input)',
+                        ring: 'var(--ring)',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Motion (not Framer Motion) - using latest version -->
+    <script src="https://unpkg.com/motion@10.15.1/dist/umd/motion.js"></script>
+    
+    <!-- Lucide React for icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+
+    <!-- Custom Styles - Exact copy from your globals.css -->
+    <style>
+        /* Exact copy from your globals.css */
+        :root {
+            --font-size: 16px;
+            --background: #ffffff;
+            --foreground: oklch(0.145 0 0);
+            --card: #ffffff;
+            --card-foreground: oklch(0.145 0 0);
+            --popover: oklch(1 0 0);
+            --popover-foreground: oklch(0.145 0 0);
+            --primary: #030213;
+            --primary-foreground: oklch(1 0 0);
+            --secondary: oklch(0.95 0.0058 264.53);
+            --secondary-foreground: #030213;
+            --muted: #ececf0;
+            --muted-foreground: #717182;
+            --accent: #e9ebef;
+            --accent-foreground: #030213;
+            --destructive: #d4183d;
+            --destructive-foreground: #ffffff;
+            --border: rgba(0, 0, 0, 0.1);
+            --input: transparent;
+            --input-background: #f3f3f5;
+            --switch-background: #cbced4;
+            --font-weight-medium: 500;
+            --font-weight-normal: 400;
+            --ring: oklch(0.708 0 0);
+            --chart-1: oklch(0.646 0.222 41.116);
+            --chart-2: oklch(0.6 0.118 184.704);
+            --chart-3: oklch(0.398 0.07 227.392);
+            --chart-4: oklch(0.828 0.189 84.429);
+            --chart-5: oklch(0.769 0.188 70.08);
+            --radius: 0.625rem;
+            --sidebar: oklch(0.985 0 0);
+            --sidebar-foreground: oklch(0.145 0 0);
+            --sidebar-primary: #030213;
+            --sidebar-primary-foreground: oklch(0.985 0 0);
+            --sidebar-accent: oklch(0.97 0 0);
+            --sidebar-accent-foreground: oklch(0.205 0 0);
+            --sidebar-border: oklch(0.922 0 0);
+            --sidebar-ring: oklch(0.708 0 0);
+        }
+
+        .dark {
+            --background: oklch(0.145 0 0);
+            --foreground: oklch(0.985 0 0);
+            --card: oklch(0.145 0 0);
+            --card-foreground: oklch(0.985 0 0);
+            --popover: oklch(0.145 0 0);
+            --popover-foreground: oklch(0.985 0 0);
+            --primary: oklch(0.985 0 0);
+            --primary-foreground: oklch(0.205 0 0);
+            --secondary: oklch(0.269 0 0);
+            --secondary-foreground: oklch(0.985 0 0);
+            --muted: oklch(0.269 0 0);
+            --muted-foreground: oklch(0.708 0 0);
+            --accent: oklch(0.269 0 0);
+            --accent-foreground: oklch(0.985 0 0);
+            --destructive: oklch(0.396 0.141 25.723);
+            --destructive-foreground: oklch(0.637 0.237 25.331);
+            --border: oklch(0.269 0 0);
+            --input: oklch(0.269 0 0);
+            --ring: oklch(0.439 0 0);
+            --font-weight-medium: 500;
+            --font-weight-normal: 400;
+            --chart-1: oklch(0.488 0.243 264.376);
+            --chart-2: oklch(0.696 0.17 162.48);
+            --chart-3: oklch(0.769 0.188 70.08);
+            --chart-4: oklch(0.627 0.265 303.9);
+            --chart-5: oklch(0.645 0.246 16.439);
+            --sidebar: oklch(0.205 0 0);
+            --sidebar-foreground: oklch(0.985 0 0);
+            --sidebar-primary: oklch(0.488 0.243 264.376);
+            --sidebar-primary-foreground: oklch(0.985 0 0);
+            --sidebar-accent: oklch(0.269 0 0);
+            --sidebar-accent-foreground: oklch(0.985 0 0);
+            --sidebar-border: oklch(0.269 0 0);
+            --sidebar-ring: oklch(0.439 0 0);
+        }
+
+        html {
+            font-size: var(--font-size);
+            font-family: 'Kepler Std', serif;
+        }
+
+        body {
+            font-family: 'Kepler Std', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        @keyframes spin360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-wiggle {
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        .animate-spin-360 {
+            animation: spin360 0.6s ease-in-out;
+        }
+
+        /* Glass morphism effect */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-morphism:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal backdrop */
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+        }
+
+        /* Navigation hover effects */
+        .nav-item {
+            transition: all 0.3s ease;
+            color: #9ca3af;
+        }
+
+        .nav-item:hover {
+            color: #60a5fa;
+            transform: translateX(8px);
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Bear hover effects */
+        .bear-container {
+            transition: all 0.3s ease;
+        }
+
+        .bear-container:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+        }
+
+        /* Portfolio cards */
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Loading progress bar */
+        .progress-bar {
+            transition: width 0.3s ease-out;
+        }
+
+        /* Bear glow effect */
+        .bear-glow {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .bear-container:hover .bear-glow {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Iframe responsive */
+        .sketchfab-embed {
+            position: relative;
+            width: 100%;
+            height: 16rem; /* h-64 equivalent */
+        }
+
+        .sketchfab-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = Motion;
+        const { ExternalLink } = LucideReact;
+
+        // Portfolio content - exact copy from your content.ts
+        const portfolioContent = {
+            name: "Voltairenoel Encarnacion",
+            title: "Mechanical Engineering Student",
+            description: "     I am a Mechanical Engineering Student that has Good experience in 3D modeling.",
+            
+            about: {
+                title: "about",
+                content: `Mechanical Engineering student with hands-on experience in CAD/CAM, 3D modeling,
+    
+and technical drafting.Proficient in designing and manufacturing, with competency in
+
+tools such as Fusion 360, Blender, Solidworks, and more. Seeking opportunities to apply
+
+design and manufacturing skills in a dynamic engineering environment.`
+            },
+            
+            experience: {
+                title: "Experience",
+                jobs: [
+                    {
+                        period: "2022 — 2023",
+                        title: "Engine Swap Project",
+                        company: "2007 Dodge Durango 4.7l v8",
+                        description: "Performed full engine swap on a 2007 Dodge Durango (4.7L V-8) including removal of powertrain, installation of replacement engine and ECU calibration"
+                    },
+                    {
+                        period: "2020 — Present", 
+                        title: "Freelance 3D Modeling",
+                        company: "CAD and software",
+                        description: "Created 3D objects and CAD models for clients, tailored to their specifications, Example; Produced CAM files for manufacturing and machining for example; Automatic mouth washer components"
+                    }
+                ]
+            },
+            
+            projects: {
+                title: "Skills", 
+                items: [
+                    {
+                        title: "3D Modeling and CAD/CAM",
+                        description: "Skills in creating 3D objects, creating Drawings, Draftings, and Schematic Drawings",
+                        tech: ["Fusion 360", "Blender", "Tinkercad"],
+                        link: "https://www.behance.net/gallery/234371203/3D-Modeling-Portfolio"
+                    },
+                    {
+                        title: "Programming",
+                        description: "Has Expierence in creating websites and scripting gui",
+                        tech: ["Python", "C++", "CSS"],
+                        link: "#"
+                    }
+                ]
+            },
+            
+            portfolio: {
+                title: "Portfolio",
+                items: [
+                    {
+                        title: "Engine Exploded View Model",
+                        description: "Detailed 3D model showcasing complete engine assembly with exploded view for educational and visualization purposes",
+                        tech: ["Fusion 360", "3D Modeling", "CAD"],
+                        image: "automotive-engine",
+                        link: "https://sketchfab.com/models/10aafee91fcb4c46be9e16f68f8bf329"
+                    },
+                    {
+                        title: "Behance 3D Modeling Portfolio",
+                        description: "Professional portfolio showcasing precision-engineered automotive parts, mechanical assemblies, and technical 3D modeling work",
+                        tech: ["Behance", "3D Portfolio", "CAD Showcase"],
+                        image: "behance-portfolio",
+                        link: "https://www.behance.net/gallery/234371203/3D-Modeling-Portfolio"
+                    },
+                    {
+                        title: "Professional Resume",
+                        description: "Comprehensive overview of my mechanical engineering education, hands-on experience, and technical skills in CAD/CAM and 3D modeling",
+                        tech: ["Resume", "PDF", "Professional"],
+                        image: "professional-resume",
+                        link: "https://docs.google.com/document/d/1oh-VYBeFESDtN7v220F-d412JO9F-1qhsFPtmplkonI/edit?usp=drive_link"
+                    }
+                ]
+            },
+            
+            social: {
+                github: "https://github.com/voltemf",
+                linkedin: "https://linkedin.com", 
+                dribbble: "https://dribbble.com",
+                instagram: "https://instagram.com/45.emf",
+                spotify: "https://open.spotify.com/user/31eyznu4473v2evz7thwfb6yx5va?si=7f8f810f041e4ebb"
+            },
+            
+            background: {
+                showBackground: true,
+                backgroundFile: "https://sketchfab.com/models/10aafee91fcb4c46be9e16f68f8bf329/embed?autospin=1&autostart=1&preload=1&transparent=1"
+            }
+        };
+
+        // Bear image URL
+        const bearImage = "https://i.imgur.com/DuvwmDi.png";
+
+        // Portfolio images
+        const getPortfolioImage = (index) => {
+            const images = [
+                "https://images.unsplash.com/photo-1752774579270-523a9e91e6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbW90aXZlJTIwZW5naW5lJTIwcGFydHN8ZW58MXx8fHwxNzU4MDcyMTc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+                "https://images.unsplash.com/photo-1710799885122-428e63eff691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWhhbmNlJTIwcG9ydGZvbGlvJTIwZGVzaWdufGVufDF8fHx8MTc1ODA3MzcyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+                "https://images.unsplash.com/photo-1587287720754-94bac45f0bff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjByZXN1bWUlMjBkb2N1bWVudHxlbnwxfHx8fDE3NTgwNzI3NzF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            ];
+            return images[index] || images[0];
+        };
+
+        // Loading Screen Component
+        function LoadingScreen({ onComplete }) {
+            const [progress, setProgress] = useState(0);
+
+            useEffect(() => {
+                const startTime = Date.now();
+                const maxDuration = 7500;
+                
+                const interval = setInterval(() => {
+                    const elapsed = Date.now() - startTime;
+                    const targetProgress = Math.min((elapsed / 7000) * 100, 100);
+                    
+                    setProgress(prev => {
+                        const nextProgress = Math.max(prev + 1, Math.floor(targetProgress));
+                        
+                        if (nextProgress >= 100 || elapsed >= maxDuration) {
+                            clearInterval(interval);
+                            setTimeout(onComplete, 500);
+                            return 100;
+                        }
+                        return nextProgress;
+                    });
+                }, 70);
+
+                const failsafe = setTimeout(() => {
+                    clearInterval(interval);
+                    setProgress(100);
+                    setTimeout(onComplete, 500);
+                }, maxDuration);
+
+                return () => {
+                    clearInterval(interval);
+                    clearTimeout(failsafe);
+                };
+            }, [onComplete]);
+
+            return React.createElement(motion.div, {
+                className: "fixed inset-0 z-50 flex items-center justify-center",
+                style: { 
+                    backgroundColor: '#191970',
+                    opacity: Math.max(0.98 - (progress * 0.003), 0.68)
+                },
+                initial: { opacity: 1 },
+                exit: { opacity: 0 },
+                transition: { duration: 0.8, ease: "easeInOut" }
+            }, [
+                React.createElement('div', {
+                    key: 'pattern',
+                    className: "absolute inset-0 opacity-5",
+                    style: {
+                        backgroundImage: `
+                            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '50px 50px'
+                    }
+                }),
+                React.createElement('div', {
+                    key: 'content',
+                    className: "relative z-10 text-center"
+                }, [
+                    React.createElement(motion.div, {
+                        key: 'bear',
+                        className: "mb-8 flex justify-center",
+                        initial: { scale: 0, rotate: -180 },
+                        animate: { scale: 1, rotate: 0 },
+                        transition: { 
+                            duration: 1,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 15
+                        }
+                    }, React.createElement(motion.img, {
+                        src: bearImage,
+                        alt: "Bear mascot",
+                        className: "w-20 h-20",
+                        animate: { y: [0, -10, 0] },
+                        transition: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }
+                    })),
+                    React.createElement(motion.div, {
+                        key: 'text',
+                        initial: { opacity: 0, y: 20 },
+                        animate: { opacity: 1, y: 0 },
+                        transition: { delay: 0.5, duration: 0.6 },
+                        className: "mb-8"
+                    }, [
+                        React.createElement('h1', {
+                            key: 'title',
+                            className: "text-3xl lg:text-4xl text-white mb-2 tracking-tight"
+                        }, "Welcome"),
+                        React.createElement('p', {
+                            key: 'subtitle',
+                            className: "text-gray-300 text-lg"
+                        }, "Loading portfolio...")
+                    ]),
+                    React.createElement(motion.div, {
+                        key: 'progress',
+                        initial: { opacity: 0, scale: 0.8 },
+                        animate: { opacity: 1, scale: 1 },
+                        transition: { delay: 0.8, duration: 0.4 },
+                        className: "w-64 mx-auto"
+                    }, [
+                        React.createElement('div', {
+                            key: 'container',
+                            className: "relative"
+                        }, [
+                            React.createElement('div', {
+                                key: 'bg',
+                                className: "w-full h-2 bg-white/10 rounded-full overflow-hidden"
+                            }, React.createElement(motion.div, {
+                                className: "h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full",
+                                initial: { width: 0 },
+                                animate: { width: `${progress}%` },
+                                transition: { duration: 0.3, ease: "easeOut" }
+                            })),
+                            React.createElement(motion.div, {
+                                key: 'glow',
+                                className: "absolute inset-0 h-2 bg-gradient-to-r from-blue-400/50 to-blue-600/50 rounded-full blur-sm",
+                                initial: { width: 0 },
+                                animate: { width: `${progress}%` },
+                                transition: { duration: 0.3, ease: "easeOut" }
+                            })
+                        ]),
+                        React.createElement(motion.div, {
+                            key: 'percentage',
+                            className: "mt-4 text-gray-400 text-sm tracking-wider",
+                            initial: { opacity: 0 },
+                            animate: { opacity: 1 },
+                            transition: { delay: 1, duration: 0.4 }
+                        }, `${progress}%`)
+                    ])
+                ])
+            ]);
+        }
+
+        // Navigation Component - Exact match to your Navigation.tsx
+        function Navigation({ activeSection, onSectionChange }) {
+            const sections = [
+                { id: 'about', label: portfolioContent.about.title },
+                { id: 'experience', label: portfolioContent.experience.title },
+                { id: 'portfolio', label: portfolioContent.portfolio.title },
+                { id: 'projects', label: portfolioContent.projects.title }
+            ];
+
+            return React.createElement('nav', { className: "space-y-4" },
+                sections.map(section =>
+                    React.createElement('button', {
+                        key: section.id,
+                        onClick: () => onSectionChange(section.id),
+                        className: `group flex items-center text-left transition-all duration-200 ${
+                            activeSection === section.id
+                                ? 'text-white'
+                                : 'text-gray-400 hover:text-gray-200'
+                        }`
+                    }, [
+                        React.createElement('div', {
+                            key: 'line',
+                            className: `h-px bg-current transition-all duration-200 mr-4 ${
+                                activeSection === section.id ? 'w-16' : 'w-8 group-hover:w-12'
+                            }`
+                        }),
+                        React.createElement('span', {
+                            key: 'label',
+                            className: "tracking-wider uppercase text-sm font-medium"
+                        }, section.label)
+                    ])
+                )
+            );
+        }
+
+        // Social Links Component - Exact match to your SocialLinks.tsx with icons
+        function SocialLinks() {
+            const { Github, Linkedin, Dribbble, Instagram, Music } = LucideReact;
+            
+            const socialIcons = [
+                { href: portfolioContent.social.github, icon: Github, label: 'GitHub' },
+                { href: portfolioContent.social.linkedin, icon: Linkedin, label: 'LinkedIn' },
+                { href: portfolioContent.social.dribbble, icon: Dribbble, label: 'Dribbble' },
+                { href: portfolioContent.social.instagram, icon: Instagram, label: 'Instagram' },
+                { href: portfolioContent.social.spotify, icon: Music, label: 'Spotify' }
+            ];
+
+            return React.createElement('div', { className: "flex gap-6 mt-8" },
+                socialIcons.map(({ href, icon: Icon, label }) =>
+                    React.createElement('a', {
+                        key: label,
+                        href: href,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        className: "text-gray-400 hover:text-white transition-colors duration-200",
+                        'aria-label': label
+                    }, React.createElement(Icon, { className: "w-6 h-6" }))
+                )
+            );
+        }
+
+        // Bear Modal Component
+        function BearModal({ isOpen, onClose }) {
+            const [bearAnimation, setBearAnimation] = useState('');
+
+            if (!isOpen) return null;
+
+            return React.createElement(AnimatePresence, {}, 
+                React.createElement('div', { key: 'modal', className: "fixed inset-0 z-50" }, [
+                    React.createElement(motion.div, {
+                        key: 'backdrop',
+                        className: "fixed inset-0 bg-black/50 modal-backdrop",
+                        initial: { opacity: 0 },
+                        animate: { opacity: 1 },
+                        exit: { opacity: 0 },
+                        onClick: onClose
+                    }),
+                    React.createElement('div', {
+                        key: 'modal-container',
+                        className: "fixed inset-0 flex items-center justify-center p-4"
+                    }, React.createElement(motion.div, {
+                        className: "bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-md w-full border border-white/20 shadow-2xl relative",
+                        initial: { scale: 0, rotate: -180 },
+                        animate: { scale: 1, rotate: 0 },
+                        exit: { scale: 0, rotate: 180 },
+                        transition: { 
+                            type: "spring", 
+                            stiffness: 200, 
+                            damping: 20 
+                        }
+                    }, [
+                        React.createElement('button', {
+                            key: 'close',
+                            onClick: onClose,
+                            className: "absolute top-4 right-4 text-white/60 hover:text-white text-xl transition-colors",
+                            'aria-label': "Close modal"
+                        }, "×"),
+                        React.createElement(motion.div, {
+                            key: 'bear-corner',
+                            className: "absolute bottom-4 right-4",
+                            initial: { opacity: 0, scale: 0 },
+                            animate: { 
+                                opacity: 1, 
+                                scale: 1,
+                                x: [-0.5, 0.5, -0.5, 0.5, 0],
+                                y: [-0.3, 0.3, -0.3, 0.3, 0]
+                            },
+                            transition: { 
+                                opacity: { delay: 0.8, duration: 0.3 },
+                                scale: { delay: 0.8, duration: 0.3 },
+                                x: { 
+                                    delay: 0.8,
+                                    duration: 0.2, 
+                                    repeat: Infinity, 
+                                    repeatType: "loop" 
+                                },
+                                y: { 
+                                    delay: 0.8,
+                                    duration: 0.25, 
+                                    repeat: Infinity, 
+                                    repeatType: "loop" 
+                                }
+                            }
+                        }, React.createElement('img', {
+                            src: bearImage,
+                            alt: "Vibrating bear mascot",
+                            className: "w-8 h-8 drop-shadow-lg opacity-80"
+                        })),
+                        React.createElement('div', {
+                            key: 'main-bear',
+                            className: "text-center mb-6"
+                        }, React.createElement('img', {
+                            src: bearImage,
+                            alt: "Bear mascot",
+                            className: "w-20 h-20 mx-auto drop-shadow-lg border-2 border-white/30 rounded-full p-1"
+                        })),
+                        React.createElement('div', {
+                            key: 'content',
+                            className: "text-center text-white"
+                        }, [
+                            React.createElement(motion.h2, {
+                                key: 'title',
+                                className: "text-2xl mb-4",
+                                initial: { opacity: 0, y: 20 },
+                                animate: { opacity: 1, y: 0 },
+                                transition: { delay: 0.3 }
+                            }, "Voltairenoel Encarnacion"),
+                            React.createElement(motion.div, {
+                                key: 'details',
+                                className: "space-y-3 text-gray-300",
+                                initial: { opacity: 0, y: 20 },
+                                animate: { opacity: 1, y: 0 },
+                                transition: { delay: 0.5 }
+                            }, [
+                                React.createElement('p', {
+                                    key: 'description',
+                                    className: "leading-relaxed"
+                                }, "About me, I'm Voltaire. I love running, playing piano, and always trying new things. One day I'll be an aerospace engineer"),
+                                React.createElement('div', {
+                                    key: 'contact',
+                                    className: "bg-white/5 rounded-lg p-4 mt-4"
+                                }, React.createElement('p', {
+                                    className: "text-sm text-blue-300"
+                                }, [
+                                    React.createElement('strong', { key: 'label' }, "Contact Me: "),
+                                    "voltemf@gmail.com"
+                                ])),
+                                React.createElement('div', {
+                                    key: 'button-container',
+                                    className: "flex justify-center mt-6"
+                                }, React.createElement(motion.button, {
+                                    onClick: onClose,
+                                    className: "bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 px-4 py-2 rounded-lg transition-colors border border-purple-400/30",
+                                    whileHover: { scale: 1.05 },
+                                    whileTap: { scale: 0.95 }
+                                }, "Close"))
+                            ])
+                        ])
+                    ]))
+                ])
+            );
+        }
+
+        // Section Components - Exact match to your component files
+        function AboutSection() {
+            return React.createElement('div', { className: "space-y-4" }, [
+                React.createElement('h2', {
+                    key: 'title',
+                    className: "text-xl text-white mb-6"
+                }, "About"),
+                React.createElement('div', {
+                    key: 'content',
+                    className: "text-gray-300 leading-relaxed space-y-4"
+                }, portfolioContent.about.content.split('\\n\\n').map((paragraph, index) =>
+                    React.createElement('p', {
+                        key: index
+                    }, paragraph)
+                ))
+            ]);
+        }
+
+        function ExperienceSection() {
+            return React.createElement('div', { className: "space-y-6" }, [
+                React.createElement('h2', {
+                    key: 'title',
+                    className: "text-xl text-white mb-6"
+                }, "Experience"),
+                React.createElement('div', {
+                    key: 'jobs',
+                    className: "space-y-8"
+                }, portfolioContent.experience.jobs.map((job, index) =>
+                    React.createElement('div', {
+                        key: index,
+                        className: "group"
+                    }, React.createElement('div', {
+                        className: "flex flex-col lg:flex-row lg:gap-6"
+                    }, [
+                        React.createElement('div', {
+                            key: 'period',
+                            className: "text-xs text-gray-400 uppercase tracking-wider mb-2 lg:mb-0 lg:w-32 flex-shrink-0"
+                        }, job.period),
+                        React.createElement('div', {
+                            key: 'details',
+                            className: "flex-1"
+                        }, [
+                            React.createElement('h3', {
+                                key: 'title',
+                                className: "text-white mb-1"
+                            }, `${job.title} · ${job.company}`),
+                            React.createElement('p', {
+                                key: 'description',
+                                className: "text-gray-300 text-sm leading-relaxed"
+                            }, job.description)
+                        ])
+                    ]))
+                ))
+            ]);
+        }
+
+        function PortfolioSection() {
+            return React.createElement('section', { className: "space-y-8" }, [
+                React.createElement('h2', {
+                    key: 'title',
+                    className: "text-2xl lg:text-3xl text-white mb-8"
+                }, portfolioContent.portfolio.title),
+                React.createElement('div', {
+                    key: 'projects',
+                    className: "space-y-12"
+                }, portfolioContent.portfolio.items.map((item, index) =>
+                    React.createElement('div', {
+                        key: index,
+                        className: "group"
+                    }, React.createElement('div', {
+                        className: "bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                    }, [
+                        React.createElement('div', {
+                            key: 'header',
+                            className: "flex items-start justify-between mb-4"
+                        }, [
+                            React.createElement('h3', {
+                                key: 'title',
+                                className: "text-xl text-white group-hover:text-blue-300 transition-colors"
+                            }, item.title),
+                            item.link !== "#" && React.createElement('a', {
+                                key: 'link',
+                                href: item.link,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                className: "text-gray-400 hover:text-white transition-colors"
+                            }, React.createElement(ExternalLink, { size: 18 }))
+                        ]),
+                        React.createElement('div', {
+                            key: 'media',
+                            className: "mb-4 bg-white/5 rounded-md overflow-hidden"
+                        }, index === 1 ? 
+                            React.createElement('div', {
+                                className: "sketchfab-embed-wrapper w-full h-64"
+                            }, [
+                                React.createElement('iframe', {
+                                    key: 'iframe',
+                                    title: "Assembly 1",
+                                    frameBorder: "0",
+                                    allowFullScreen: true,
+                                    mozallowfullscreen: "true",
+                                    webkitallowfullscreen: "true",
+                                    allow: "autoplay; fullscreen; xr-spatial-tracking",
+                                    src: "https://sketchfab.com/models/df8619af0cda42649555c0ee8af9b2c9/embed?autospin=1&autostart=1&preload=1&transparent=1",
+                                    className: "w-full h-full"
+                                }),
+                                React.createElement('p', {
+                                    key: 'attribution',
+                                    style: { fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A' }
+                                }, [
+                                    React.createElement('a', {
+                                        key: 'model-link',
+                                        href: "https://sketchfab.com/3d-models/assembly-1-df8619af0cda42649555c0ee8af9b2c9?utm_medium=embed&utm_campaign=share-popup&utm_content=df8619af0cda42649555c0ee8af9b2c9",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "Assembly 1"),
+                                    " by ",
+                                    React.createElement('a', {
+                                        key: 'author-link',
+                                        href: "https://sketchfab.com/voltemf?utm_medium=embed&utm_campaign=share-popup&utm_content=df8619af0cda42649555c0ee8af9b2c9",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "voltemf"),
+                                    " on ",
+                                    React.createElement('a', {
+                                        key: 'platform-link',
+                                        href: "https://sketchfab.com/voltemf?utm_medium=embed&utm_campaign=share-popup&utm_content=df8619af0cda42649555c0ee8af9b2c9",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "Sketchfab")
+                                ])
+                            ]) :
+                            index === 2 ?
+                            React.createElement('div', {
+                                className: "sketchfab-embed-wrapper w-full h-64"
+                            }, [
+                                React.createElement('iframe', {
+                                    key: 'iframe',
+                                    title: "Thruster",
+                                    frameBorder: "0",
+                                    allowFullScreen: true,
+                                    mozallowfullscreen: "true",
+                                    webkitallowfullscreen: "true",
+                                    allow: "autoplay; fullscreen; xr-spatial-tracking",
+                                    src: "https://sketchfab.com/models/f3c96d79aac04d1cb889c31c11cb6a44/embed?autospin=1&autostart=1&preload=1&transparent=1",
+                                    className: "w-full h-full"
+                                }),
+                                React.createElement('p', {
+                                    key: 'attribution',
+                                    style: { fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A' }
+                                }, [
+                                    React.createElement('a', {
+                                        key: 'model-link',
+                                        href: "https://sketchfab.com/3d-models/thruster-f3c96d79aac04d1cb889c31c11cb6a44?utm_medium=embed&utm_campaign=share-popup&utm_content=f3c96d79aac04d1cb889c31c11cb6a44",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "Thruster"),
+                                    " by ",
+                                    React.createElement('a', {
+                                        key: 'author-link',
+                                        href: "https://sketchfab.com/voltemf?utm_medium=embed&utm_campaign=share-popup&utm_content=f3c96d79aac04d1cb889c31c11cb6a44",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "voltemf"),
+                                    " on ",
+                                    React.createElement('a', {
+                                        key: 'platform-link',
+                                        href: "https://sketchfab.com/voltemf?utm_medium=embed&utm_campaign=share-popup&utm_content=f3c96d79aac04d1cb889c31c11cb6a44",
+                                        target: "_blank",
+                                        rel: "nofollow",
+                                        style: { fontWeight: 'bold', color: '#1CAAD9' }
+                                    }, "Sketchfab")
+                                ])
+                            ]) :
+                            React.createElement('img', {
+                                src: getPortfolioImage(index),
+                                alt: item.title,
+                                className: "w-full h-48 object-cover",
+                                onError: (e) => {
+                                    e.target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080";
+                                }
+                            })
+                        ),
+                        React.createElement('p', {
+                            key: 'description',
+                            className: "text-gray-300 mb-4 leading-relaxed"
+                        }, item.description),
+                        React.createElement('div', {
+                            key: 'tech',
+                            className: "flex flex-wrap gap-2"
+                        }, item.tech.map((tech, techIndex) =>
+                            React.createElement('span', {
+                                key: techIndex,
+                                className: "px-3 py-1 bg-blue-900/30 text-blue-300 rounded-full text-sm border border-blue-500/20"
+                            }, tech)
+                        ))
+                    ]))
+                ))
+            ]);
+        }
+
+        function ProjectsSection() {
+            return React.createElement('div', { className: "space-y-6" }, [
+                React.createElement('h2', {
+                    key: 'title',
+                    className: "text-xl text-white mb-6"
+                }, "Projects"),
+                React.createElement('div', {
+                    key: 'projects',
+                    className: "space-y-8"
+                }, portfolioContent.projects.items.map((project, index) =>
+                    React.createElement('div', {
+                        key: index,
+                        className: "group"
+                    }, React.createElement('a', {
+                        href: project.link,
+                        className: "block p-4 rounded-lg transition-all duration-200 hover:bg-white/5 hover:shadow-lg"
+                    }, [
+                        React.createElement('div', {
+                            key: 'header',
+                            className: "flex items-start justify-between mb-2"
+                        }, React.createElement('h3', {
+                            className: "text-white group-hover:text-blue-300 transition-colors duration-200 flex items-center gap-2"
+                        }, [
+                            project.title,
+                            React.createElement(ExternalLink, {
+                                key: 'icon',
+                                className: "w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                            })
+                        ])),
+                        React.createElement('p', {
+                            key: 'description',
+                            className: "text-gray-300 text-sm leading-relaxed mb-3"
+                        }, project.description),
+                        React.createElement('div', {
+                            key: 'tech',
+                            className: "flex flex-wrap gap-2"
+                        }, project.tech.map((tech, techIndex) =>
+                            React.createElement('span', {
+                                key: techIndex,
+                                className: "text-xs px-2 py-1 bg-blue-900/30 text-blue-300 rounded-full"
+                            }, tech)
+                        ))
+                    ]))
+                ))
+            ]);
+        }
+
+        // Main App Component
+        function App() {
+            const [activeSection, setActiveSection] = useState('about');
+            const [isLoading, setIsLoading] = useState(true);
+            const [modelLoaded, setModelLoaded] = useState(false);
+            const [modelError, setModelError] = useState(false);
+            const [isBearModalOpen, setIsBearModalOpen] = useState(false);
+            const [bearSpinning, setBearSpinning] = useState(false);
+
+            const renderActiveSection = () => {
+                switch (activeSection) {
+                    case 'about':
+                        return React.createElement(AboutSection);
+                    case 'experience':
+                        return React.createElement(ExperienceSection);
+                    case 'portfolio':
+                        return React.createElement(PortfolioSection);
+                    case 'projects':
+                        return React.createElement(ProjectsSection);
+                    default:
+                        return React.createElement(AboutSection);
+                }
+            };
+
+            const handleBearClick = () => {
+                setBearSpinning(true);
+                setTimeout(() => {
+                    setBearSpinning(false);
+                    setIsBearModalOpen(true);
+                }, 600);
+                console.log('🐻 Bear clicked! Opening modal...');
+            };
+
+            return React.createElement(React.Fragment, {}, [
+                React.createElement(AnimatePresence, {
+                    key: 'loading'
+                }, isLoading && React.createElement(LoadingScreen, {
+                    onComplete: () => setIsLoading(false)
+                })),
+                React.createElement(motion.div, {
+                    key: 'main',
+                    className: "min-h-screen relative overflow-hidden",
+                    initial: { opacity: 0 },
+                    animate: { opacity: 1 },
+                    transition: { duration: 0.5, ease: "easeInOut" }
+                }, [
+                    React.createElement('div', {
+                        key: 'bg-base',
+                        className: "absolute inset-0 bg-slate-900",
+                        style: { backgroundColor: '#191970' }
+                    }),
+                    /* Layer 2: Engine Exploded View 3D Model (Middle) - Seamless Midnight Blue Integration */
+                    portfolioContent.background.showBackground && portfolioContent.background.backgroundFile && !modelError && React.createElement(motion.div, {
+                        key: 'bg-model',
+                        className: "absolute inset-0 z-5",
+                        initial: { opacity: 0 },
+                        animate: { opacity: isLoading ? 0 : 1 },
+                        transition: { duration: 2, ease: "easeInOut", delay: isLoading ? 0 : 0.5 }
+                    }, React.createElement('iframe', {
+                        src: portfolioContent.background.backgroundFile,
+                        title: "engine-exploded-view",
+                        className: "w-full h-full border-0",
+                        style: { backgroundColor: '#191970' },
+                        allow: "autoplay; fullscreen; xr-spatial-tracking",
+                        allowFullScreen: true,
+                        loading: "lazy",
+                        onLoad: () => {
+                            setModelLoaded(true);
+                            console.log('3D model loaded successfully');
+                        },
+                        onError: () => {
+                            setModelError(true);
+                            console.log('3D model failed to load - using fallback');
+                        }
+                    })),
+                    (modelError || !portfolioContent.background.showBackground) && React.createElement('div', {
+                        key: 'bg-fallback',
+                        className: "absolute inset-0 z-5",
+                        style: { backgroundColor: '#191970' }
+                    }, React.createElement('div', {
+                        className: "absolute inset-0 opacity-10",
+                        style: {
+                            backgroundImage: `
+                                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.15) 0%, transparent 70%),
+                                radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.15) 0%, transparent 70%),
+                                linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)
+                            `
+                        }
+                    })),
+                    /* Layer 3: Darker Blue Overlay */
+                    React.createElement('div', {
+                        key: 'overlay',
+                        className: "absolute inset-0 z-8",
+                        style: { backgroundColor: 'rgba(25, 25, 112, 0.7)' }
+                    }),
+                    /* Layer 4: Text Content (Top) */
+                    React.createElement('div', {
+                        key: 'content',
+                        className: "relative z-10"
+                    }, React.createElement('div', {
+                        className: "container mx-auto px-6 py-12 lg:py-24"
+                    }, React.createElement('div', {
+                        className: "grid lg:grid-cols-2 gap-12 lg:gap-24 min-h-screen"
+                    }, [
+                        /* Left Column - Header & Navigation */
+                        React.createElement('div', {
+                            key: 'left',
+                            className: "lg:sticky lg:top-24 lg:h-fit"
+                        }, [
+                            React.createElement('header', {
+                                key: 'header',
+                                className: "mb-12"
+                            }, [
+                                React.createElement('h1', {
+                                    key: 'name',
+                                    className: "text-4xl lg:text-5xl text-white mb-4 tracking-tight"
+                                }, portfolioContent.name),
+                                React.createElement('h2', {
+                                    key: 'title',
+                                    className: "text-xl lg:text-2xl text-gray-300 mb-6"
+                                }, portfolioContent.title),
+                                React.createElement('p', {
+                                    key: 'description',
+                                    className: "text-gray-400 max-w-xs leading-relaxed"
+                                }, portfolioContent.description)
+                            ]),
+                            React.createElement(Navigation, {
+                                key: 'nav',
+                                activeSection: activeSection,
+                                onSectionChange: setActiveSection
+                            }),
+                            React.createElement(SocialLinks, { key: 'social' })
+                        ]),
+                        /* Right Column - Content Sections */
+                        React.createElement('div', {
+                            key: 'right',
+                            className: "lg:pt-24"
+                        }, React.createElement('main', {
+                            className: "text-gray-300"
+                        }, renderActiveSection()))
+                    ]))),
+                    /* Layer 5: Bear Image - Bottom Right Corner - Interactive */
+                    React.createElement(motion.div, {
+                        key: 'bear',
+                        className: "fixed bottom-6 right-6 z-20 cursor-pointer",
+                        whileHover: { 
+                            scale: 1.1,
+                            rotate: [0, -10, 10, -10, 0],
+                            transition: {
+                                rotate: { duration: 0.5, ease: "easeInOut" },
+                                scale: { duration: 0.2, ease: "easeOut" }
+                            }
+                        },
+                        whileTap: { 
+                            scale: 0.9,
+                            rotate: 360,
+                            transition: { 
+                                duration: 0.6,
+                                ease: "easeInOut"
+                            }
+                        },
+                        onClick: () => {
+                            setIsBearModalOpen(true);
+                            console.log('🐻 Bear clicked! Opening modal...');
+                        },
+                        title: "Click me to meet your portfolio bear! 🐻"
+                    }, [
+                        React.createElement(motion.img, {
+                            key: 'bear-img',
+                            src: bearImage,
+                            alt: "Bear mascot - Click to meet me!",
+                            className: "w-12 h-12 lg:w-16 lg:h-16 drop-shadow-lg",
+                            animate: { y: [0, -3, 0] },
+                            transition: {
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }
+                        }),
+                        /* Subtle glow effect on hover */
+                        React.createElement(motion.div, {
+                            key: 'glow',
+                            className: "absolute inset-0 bg-blue-400/20 rounded-full blur-md -z-10",
+                            initial: { opacity: 0, scale: 0.8 },
+                            whileHover: { 
+                                opacity: 1, 
+                                scale: 1.2,
+                                transition: { duration: 0.3 }
+                            }
+                        })
+                    ]),
+                    React.createElement(BearModal, {
+                        key: 'bear-modal',
+                        isOpen: isBearModalOpen,
+                        onClose: () => setIsBearModalOpen(false)
+                    })
+                ])
+            ]);
+        }
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
+
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+</html>
